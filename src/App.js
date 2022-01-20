@@ -8,21 +8,25 @@ import Car from './Car/Car';
 
 class App extends Component{
 
-
-  state={ 
-    cars:[
-      {name:'Fly Machine',year:2019},
-      {name:'Hyundai',year:2021},
-      {name:'Electical Machine',year:2022},
-      {name:'GM',year:2023},
-      {name:'Lacetii',year:2024},
-      {name:'General',year:2025},
-      {name:'Mobile',year:2026},
-      {name:'Lexus',year:2027},
-    ],
-    pageTitle:'React components',
-    showCars:false
+  constructor(props){
+    super()
+    this.state={ 
+      cars:[
+        {name:'Fly Machine',year:2019},
+        {name:'Hyundai',year:2021},
+        {name:'Electical Machine',year:2022},
+        {name:'GM',year:2023},
+        {name:'Lacetii',year:2024},
+        {name:'General',year:2025},
+        {name:'Mobile',year:2026},
+        {name:'Lexus',year:2027},
+      ],
+      pageTitle:'React components',
+      showCars:false
+    }
   }
+
+  
   // changeTitleHandler=(newTitle)=>{
   //  alert("dawd"); 
     // const oldTitle=this.state.pageTitle;
@@ -68,6 +72,12 @@ class App extends Component{
       cars.splice(index,1)
       this.setState({cars})
     }
+    componentWillMount(){
+      console.log('App componentWillMount'); 
+      }
+    componentDidMount(){
+      console.log('App componentDidMount'); 
+      }
   // handleInput=(event)=>{ 
   //   // console.log("sda",event.target.value);
   //   this.setState({
@@ -75,7 +85,7 @@ class App extends Component{
   //   })
   // } 
   render(){
-
+    console.log('App render')
     const divStyle={
       textAlign:'center'
   
@@ -111,7 +121,7 @@ class App extends Component{
 // const cars=this.state.cars
   return (
     <div style={divStyle}>
-    <h1>Xray Ray</h1>
+    <h1>{this.props.title}</h1>
 
     {/* <input type="text" onChange={this.handleInput} /> */}
     {/* <Car name={' Mers '} year={2018}>

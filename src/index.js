@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <App/>,
+  <App title={"This is website for car!"}/>,
   document.getElementById('root')
 );
 reportWebVitals();
