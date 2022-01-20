@@ -9,12 +9,16 @@ import Car from './Car/Car';
 class App extends Component{
 
 
-  state={
+  state={ 
     cars:[
       {name:'Fly Machine',year:2019},
       {name:'Hyundai',year:2021},
       {name:'Electical Machine',year:2022},
       {name:'GM',year:2023},
+      {name:'Lacetii',year:2024},
+      {name:'General',year:2025},
+      {name:'Mobile',year:2026},
+      {name:'Lexus',year:2027},
     ],
     pageTitle:'React components',
     showCars:false
@@ -55,6 +59,15 @@ class App extends Component{
 
        this.state.cars[index]=car
   }
+
+  deleteHandler=(index)=>{
+     console.log("delete");
+    //  this.setState({pageTitle:'Deleted'})
+      
+      const cars=this.state.cars.concat();
+      cars.splice(index,1)
+      this.setState({cars})
+    }
   // handleInput=(event)=>{ 
   //   // console.log("sda",event.target.value);
   //   this.setState({
@@ -78,6 +91,7 @@ class App extends Component{
         year={car.year}
         onChangeTitle={()=>this.changeTitleHandler(car.name)}
         onChangeName={event=>this.onChangeName(event.target.value,index)}
+        onDelete={this.deleteHandler.bind(this,index)}
         />
       )
     })
@@ -111,7 +125,14 @@ class App extends Component{
     <h1>{this.state.pageTitle}</h1>
     {/* <button onClick={this.changeTitleHandler.bind(this,'Changed!') }>Change title</button> */}
     <button onClick={this.toggleCarsHandler}>Toogle Bar</button>
+    
+    <div style={{
+      width:400,
+      margin:'auto',
+      paddingTop:'20px',
+      }}>
     {cars}
+    </div>
    
    
    
