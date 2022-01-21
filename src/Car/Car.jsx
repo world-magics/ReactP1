@@ -23,6 +23,9 @@ class Car extends React.Component{
         console.log('Car componentDidUpdatev',nextProps)    
 
     }
+    componentWillUnmount(){
+        console.log('Car componentWillUnmount')
+    }
 
     render(){
         console.log('Car render')    
