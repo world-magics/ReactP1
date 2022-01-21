@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from 'radium'
+// import Radium from 'radium'
 import './Car.css'
 // const [state, setState] = useState(0);
 // const random1=()=>{
@@ -7,7 +7,25 @@ import './Car.css'
 //                   }
 
 class Car extends React.Component{
+
+    componentWillReceiveProps(nextProps){
+        console.log('Car componentWillReceiveProps',nextProps)    }
+    shouldComponentUpdate(nextProps,nextState){
+        console.log('Car shouldComponentUpdate',nextProps);
+        return nextProps.name.trim() !==this.props.name.trim();
+
+    }
+    componentWillUpdate(nextProps,nextState){
+        console.log('Car componentWillUpdate',nextProps)    
+
+    }
+    componentDidUpdate(nextProps){
+        console.log('Car componentDidUpdatev',nextProps)    
+
+    }
+
     render(){
+        console.log('Car render')    
  // const [state, setState] = useState(10);
 
     // const random1=()=>{
@@ -55,4 +73,4 @@ class Car extends React.Component{
 
 
 
-export default Radium(Car)
+export default Car;

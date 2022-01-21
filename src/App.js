@@ -12,14 +12,14 @@ class App extends Component{
     super()
     this.state={ 
       cars:[
-        {name:'Fly Machine',year:2019},
-        {name:'Hyundai',year:2021},
-        {name:'Electical Machine',year:2022},
-        {name:'GM',year:2023},
-        {name:'Lacetii',year:2024},
-        {name:'General',year:2025},
-        {name:'Mobile',year:2026},
-        {name:'Lexus',year:2027},
+        {name:'FlyMachine',year:2019},
+        // {name:'Hyundai',year:2021},
+        // {name:'Electical Machine',year:2022},
+        // {name:'GM',year:2023},
+        // {name:'Lacetii',year:2024},
+        // {name:'General',year:2025},
+        // {name:'Mobile',year:2026},
+        // {name:'Lexus',year:2027},
       ],
       pageTitle:'React components',
       showCars:false
