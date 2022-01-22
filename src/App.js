@@ -3,8 +3,7 @@ import './App.css';
 import { Component } from 'react/cjs/react.development';
 import React from 'react';
 import Car from './Car/Car';
-
-
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component{
 
@@ -13,13 +12,13 @@ class App extends Component{
     this.state={ 
       cars:[
         {name:'FlyMachine',year:2019},
-        // {name:'Hyundai',year:2021},
-        // {name:'Electical Machine',year:2022},
-        // {name:'GM',year:2023},
-        // {name:'Lacetii',year:2024},
-        // {name:'General',year:2025},
-        // {name:'Mobile',year:2026},
-        // {name:'Lexus',year:2027},
+        {name:'Hyundai',year:2021},
+        {name:'Electical Machine',year:2022},
+        {name:'GM',year:2023},
+        {name:'Lacetii',year:2024},
+        {name:'General',year:2025},
+        {name:'Mobile',year:2026},
+        {name:'Lexus',year:2027},
       ],
       pageTitle:'React components',
       showCars:false
@@ -95,14 +94,16 @@ class App extends Component{
    if(this.state.showCars){
   cars= this.state.cars.map((car,index)=>{
       return (
+        <ErrorBoundary   key={index}>
         <Car 
-        key={index}
+      
         name={car.name}
         year={car.year}
         onChangeTitle={()=>this.changeTitleHandler(car.name)}
         onChangeName={event=>this.onChangeName(event.target.value,index)}
         onDelete={this.deleteHandler.bind(this,index)}
         />
+        </ErrorBoundary>
       )
     })
    }

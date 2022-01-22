@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
-    "@svgr/webpack": "^5.5.0",
+    "@svgr/webpack": "^6.2.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -45,8 +44,9 @@
     "react-dev-utils": "^12.0.0",
     "react-dom": "^17.0.2",
     "react-refresh": "^0.11.0",
+    "react-script": "^2.0.5",
     "resolve": "^1.20.0",
-    "resolve-url-loader": "^4.0.0",
+    "resolve-url-loader": "^5.0.0",
     "semver": "^7.3.5",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
@@ -137,8 +137,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.16.10",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
-    "webpack": "^5.66.0"
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
   }
 }

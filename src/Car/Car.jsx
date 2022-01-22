@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "../Counter/Counter";
 // import Radium from 'radium'
 import './Car.css'
 // const [state, setState] = useState(0);
@@ -19,16 +20,31 @@ class Car extends React.Component{
         console.log('Car componentWillUpdate',nextProps)    
 
     }
+    // static getDrivedStateFromProps(nextProps,prevState){
+    //     console.log('Car getDrivedStateFromProps',  nextProps,prevState);
+    //     return prevState
+    // }
+
     componentDidUpdate(nextProps){
         console.log('Car componentDidUpdatev',nextProps)    
 
     }
+
+    // getSnapshotBeforeUpdate(){
+    //     console.log("Car getSnapshotBeforeUpdate ");
+    // }
+
     componentWillUnmount(){
         console.log('Car componentWillUnmount')
     }
 
     render(){
         console.log('Car render')    
+
+        // if(Math.random()>0.7){
+        //     throw new Error('Car random failed')
+        // }
+
  // const [state, setState] = useState(10);
 
     // const random1=()=>{
@@ -55,6 +71,7 @@ class Car extends React.Component{
     }
     return (
         <div className="Car" style={style}>
+            <Counter/>
         {/* <h1>Xray Random {state}</h1>
 
         <button onClick={random1}>Random</button> */}
