@@ -14,12 +14,17 @@
     -moz-transition: border,box-shadow .3s ;
     -ms-transition: border,box-shadow .3s ;
     -o-transition: border,box-shadow .3s ;
+  
+}
+.Car:hover{
+    border:1px solid #aaa;
+    box-shadow:0 14px 15px 0 rgba(0,0,0,.25);
     cursor: pointer;
 }
 .input{
 
 }
-.input:active, .input:focus{
+.input:active{
     outline: none;
 }
 .input.green{

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import Counter from "../Counter/Counter";
+import withClass from "../hoc/withClass";
 // import Radium from 'radium'
-import './Car.css'
+import classes from './Car.css'
 // const [state, setState] = useState(0);
 // const random1=()=>{
 //     setState({Math.round(Math.random*10)});
 //                   }
-
+import PropTypes  from 'prop-types'
 class Car extends React.Component{
 
     componentWillReceiveProps(nextProps){
@@ -37,8 +38,19 @@ class Car extends React.Component{
     componentWillUnmount(){
         console.log('Car componentWillUnmount')
     }
+    constructor(props){
+        super(props)
+        this.inputRef=React.createRef()
+    }
+    componentDidMount(){
+        if(this.props.index===0){
+            this.inputRef.current.focus()
+        } 
+        this.inputRef.current.style.background='red'
+    }
 
     render(){
+      
         console.log('Car render')    
 
         // if(Math.random()>0.7){
@@ -50,47 +62,60 @@ class Car extends React.Component{
     // const random1=()=>{
     //     setState(Math.round(Math.random()*10));
     // }
-    const inputClasses=['input']
+    const inputClasses=[classes.input]
+    // const green=['green']
     if(this.props.name!==''){
-        inputClasses.push('green');
+        inputClasses.push(classes.green);
     }
     else{
-        inputClasses.push('red');
+        inputClasses.push(classes.red);
     }
 
     if(this.props.name.length>4){
-        inputClasses.push('bold');
+        inputClasses.push(classes.bold);
     }
-    const style={  
-        border:'1 2px solid #ccc',
-        boxShadow:'0 4px 5px 0 rgba(0, 0, 0, .14)',
-        ':hover':{
-            border:'1px solid red',
-            boxShadow:'0 14px 45px 0 rgba(0,0,0,.25)'
-        }
-    }
+    // const style={  
+    //     border:'1 2px solid #ccc',
+    //     boxShadow:'0 4px 5px 0 rgba(0, 0, 0, .14)',
+    //     ':hover':{
+    //         border:'1px solid red',
+    //         boxShadow:'0 14px 45px 0 rgba(0,0,0,.25)'
+    //     }
+    // }
     return (
-        <div className="Car" style={style}>
-            <Counter/>
+        
+ 
+        <React.Fragment>
+            
         {/* <h1>Xray Random {state}</h1>
 
         <button onClick={random1}>Random</button> */}
-
+  <Counter/>
         <h3>Car name:{this.props.name}</h3>
         {this.props.children}
         <p>Year: <strong>{this.props.year}</strong></p>
         <input 
+        ref={this.inputRef}
         type="text"
         onChange={this.props.onChangeName} 
         value={this.props.name}
         className={inputClasses.join(' ')} />
         <button onClick={this.props.onChangeTitle}>Click Button</button>
         <button onClick={this.props.onDelete}>Delete</button>
-        </div>
+        </React.Fragment>
+       
     )
     }
 }
 
+Car.propTypes={
+    name:PropTypes.string.isRequired,
+    year:PropTypes.number,
+    index:PropTypes.number,
+    onChangeName:PropTypes.func,
+    onDelete:PropTypes.func
+
+}
 
 
-export default Car;
+export default withClass(Car,classes.Car);

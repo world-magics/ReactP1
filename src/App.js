@@ -4,12 +4,16 @@ import { Component } from 'react/cjs/react.development';
 import React from 'react';
 import Car from './Car/Car';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Counter from './Counter/Counter';
+
+export const ClickedContext=React.createContext(false)
 
 class App extends Component{
 
   constructor(props){
     super()
     this.state={ 
+      clicked:false,
       cars:[
         {name:'FlyMachine',year:2019},
         {name:'Hyundai',year:2021},
@@ -90,13 +94,14 @@ class App extends Component{
   
 
    }
+   
     let cars=null
    if(this.state.showCars){
   cars= this.state.cars.map((car,index)=>{
       return (
         <ErrorBoundary   key={index}>
         <Car 
-      
+        index={index}
         name={car.name}
         year={car.year}
         onChangeTitle={()=>this.changeTitleHandler(car.name)}
@@ -104,6 +109,7 @@ class App extends Component{
         onDelete={this.deleteHandler.bind(this,index)}
         />
         </ErrorBoundary>
+        
       )
     })
    }
@@ -123,7 +129,10 @@ class App extends Component{
   return (
     <div style={divStyle}>
     <h1>{this.props.title}</h1>
-
+    <ClickedContext.Provider value={this.state.clicked}>
+ <Counter/>
+ {/* <Counter clicked={this.state.clicked}/> */}
+    </ClickedContext.Provider>
     {/* <input type="text" onChange={this.handleInput} /> */}
     {/* <Car name={' Mers '} year={2018}>
     <p style={{color:'red'}}>Lorem ipsum dolor sit amet.</p>
@@ -134,9 +143,10 @@ class App extends Component{
     </Car> */}
     
     <h1>{this.state.pageTitle}</h1>
+    
     {/* <button onClick={this.changeTitleHandler.bind(this,'Changed!') }>Change title</button> */}
     <button onClick={this.toggleCarsHandler}>Toogle Bar</button>
-    
+    <button onClick={()=>this.setState({clicked:true})}>Change clicked</button>
     <div style={{
       width:400,
       margin:'auto',
@@ -146,7 +156,7 @@ class App extends Component{
     </div>
    
    
-   
+
    
    
    
